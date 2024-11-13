@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica Tips HTML</title>
+    <style>
+        .meter-label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        meter {
+            width: 300px;
+            height: 20px;
+        }
+
+
+        .search-wrapper {
+            padding-top: 30px;
+            text-align: center;
+            min-height: 200px;
+        }
+
+        .search-input {
+            padding: 10px;
+            font-size: 1.2em;
+            border: 1px solid #999;
+            border-radius: 4px;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@600&display=swap');
+
+        form {
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .wrapper {
+            text-align: center;
+            padding: 0 15px;
+            background-color: #173446;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.4em;
+        }
+
+        a {
+            color: #999;
+            position: relative;
+        }
+
+        a:after {
+            background-color: #999;
+            bottom: 0;
+            content: "";
+            height: 1px;
+            left: 0;
+            position: absolute;
+            transform: scaleX(0);
+            transition: all .3s ease-in-out 0s;
+            visibility: hidden;
+            width: 100%;
+        }
+
+        a:hover:after {
+            transform: scaleX(1);
+            visibility: visible;
+        }
+
+        body {
+            padding: 20px;
+        }
+
+        label .a{
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input .a{
+            width: 300px;
+            margin-bottom: 15px;
+        }
+    </style>
+    <base target="_blank">
+</head>
+
+<body>
+    <h1>1. El atributo 'loading=lazy'</h1>
+    <p>Consejo de rendimiento. Puede usar el atributo para aplazar la carga de la imagen hasta que el usuario se
+        desplace hasta ella.</p>
+
+    <img src='tipshtmlimg.png' loading='lazy' alt='Alternative Text'><br>
+
+    <h1>2. Enlaces de correo electrónico, llamadas y SMS:</h1>
+
+    <a href="mailto:{email}?subject={subject}&body={content}">
+        Send us an email
+    </a><br>
+
+    <a href="tel:{phone}">
+        Call us
+    </a><br>
+
+    <a href="sms:{phone}?body={content}">
+        Send us a message
+    </a><br>
+
+    <h1>3. Atributo 'start' de listas ordenadas.</h1>
+    <p>Utilice el atributo para cambiar el punto de inicio de las listas ordenadas.</p>
+
+    <ol start="11">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>Go</li>
+    </ol><br>
+
+    <h1>4. El elemento 'meter'</h1>
+    <p>Puede utilizar el elemento para visualizar cantidades. No se necesita JavaScript/CSS.</p>
+
+    <label class="meter-label" for="value1">Low</label>
+    <meter id="value1" min="0" max="100" low="30" high="75" optimum="80" value="25"></meter>
+
+    <label class="meter-label" for="value2">Medium</label>
+    <meter id="value2" min="0" max="100" low="30" high="75" optimum="80" value="50"></meter>
+
+    <label class="meter-label" for="value3">High</label>
+    <meter id="value3" min="0" max="100" low="30" high="75" optimum="80" value="80"></meter><br>
+
+    <h1>5. HTML Búsqueda nativa</h1>
+
+    <div class="search-wrapper">
+        <h3>
+            Native HTML Search
+        </h3>
+
+        <input class="search-input" list="items">
+
+        <datalist id="items">
+            <option value="Marko Denic">
+            <option value="FreeCodeCamp">
+            <option value="FreeCodeTools">
+            <option value="Web Development">
+            <option value="Web Developer">
+        </datalist>
+    </div><br>
+
+    <h1>6. Elemento Fieldset</h1>
+    <p>Puede utilizar el elemento para agrupar varios controles, así como etiquetas dentro de un formulario web.</p>
+
+    <form>
+        <fieldset>
+            <legend>Choose your favorite language</legend>
+
+            <input type="radio" id="javascript" name="language">
+            <label for="javascript">JavaScript</label><br />
+
+            <input type="radio" id="python" name="language">
+            <label for="python">Python</label><br />
+
+            <input type="radio" id="java" name="language">
+            <label for="java">Java</label>
+        </fieldset>
+    </form><br>
+
+    <h1>7. Window.opener</h1>
+    <p>Las páginas abiertas con target="_blank" permiten que la nueva página acceda al window.opener original. Esto
+        puede tener implicaciones de seguridad y rendimiento. Incluir rel="noopener" o rel="noreferrer" para prevenir
+        esto.</p>
+
+    <a href="https://markodenic.com/" target="_blank" rel="noopener">
+        Marko's website
+    </a><br>
+
+    <h1>8. Elemento base</h1>
+    <p>Si desea abrir todos los enlaces del documento en una nueva pestaña, puede usar el elemento base.</p>
+
+    <div class="wrapper">
+        This link will be opened in a new tab: &nbsp;
+        <a href="https://freecodetools.org/">
+            Free Code Tools
+        </a>
+
+        <p>
+            Read more: <br><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base">
+                MDN Documentation
+            </a>
+        </p>
+    </div><br>
+
+    <h1>9. Eliminación de caché de favicon</h1>
+    <p>Para actualizar el favicon de su sitio web, puede obligar a los navegadores a descargar una nueva versión
+        agregando al nombre del archivo ?v=2 .<br>
+        Esto es especialmente útil en producción para asegurarse de que los usuarios obtengan la nueva versión.</p>
+
+    <link rel="icon" href="/favicon.ico?v=2" /><br>
+
+    <h1>10. El atributo 'spellcheck'</h1>
+    <p>Utilice el atributo para definir si el elemento se puede comprobar en busca de errores ortográficos.</p>
+
+    <label class="a" for="input1">spellcheck="true"</label>
+    <input class="a" type="text" id="input1" spellcheck="true">
+
+    <label class="a" for="input2">spellcheck="false"</label>
+    <input class="a" type="text" id="input2" spellcheck="false"><br>
+
+    <h1>11. Controles deslizantes HTML nativos</h1>
+    <p>Puede utilizarlo para crear controles deslizantes.</p>
+
+    <label class="a" for="volume">Volume: </label>
+    <input class="a" type="range" id="volume" name="volume" min="0" max="20">
+
+    <label class="a" for="result">Your choice: </label>
+    <input class="a" type="number" id="result" name="result">
+</body>
+
+</html>
